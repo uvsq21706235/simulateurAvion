@@ -37,7 +37,7 @@ MOVE          = mv -f
 TAR           = tar -cf
 COMPRESS      = gzip -9f
 DISTNAME      = projet1.0.0
-DISTDIR = /home/user/Bureau/simulateurAvion/.tmp/projet1.0.0
+DISTDIR = /home/user/Bureau/projet/.tmp/projet1.0.0
 LINK          = g++
 LFLAGS        = -Wl,-rpath,/home/user/Qt/5.12.6/gcc_64/lib
 LIBS          = $(SUBLIBS) /home/user/Qt/5.12.6/gcc_64/lib/libQt5Widgets.so /home/user/Qt/5.12.6/gcc_64/lib/libQt5Gui.so /home/user/Qt/5.12.6/gcc_64/lib/libQt5Core.so -lGL -lpthread   
@@ -630,6 +630,7 @@ qmake_all: FORCE
 
 
 all: Makefile projet
+	./projet
 
 dist: distdir FORCE
 	(cd `dirname $(DISTDIR)` && $(TAR) $(DISTNAME).tar $(DISTNAME) && $(COMPRESS) $(DISTNAME).tar) && $(MOVE) `dirname $(DISTDIR)`/$(DISTNAME).tar.gz . && $(DEL_FILE) -r $(DISTDIR)
@@ -645,6 +646,7 @@ distdir: FORCE
 clean: compiler_clean 
 	-$(DEL_FILE) $(OBJECTS)
 	-$(DEL_FILE) *~ core *.core
+	rm -rf projet
 
 
 distclean: clean 
@@ -784,7 +786,7 @@ moc_Vanne.cpp: Vanne.h \
 		../../Qt/5.12.6/gcc_64/include/QtWidgets/qdialog.h \
 		moc_predefs.h \
 		../../Qt/5.12.6/gcc_64/bin/moc
-	/home/user/Qt/5.12.6/gcc_64/bin/moc $(DEFINES) --include /home/user/Bureau/simulateurAvion/moc_predefs.h -I/home/user/Qt/5.12.6/gcc_64/mkspecs/linux-g++ -I/home/user/Bureau/simulateurAvion -I/home/user/Qt/5.12.6/gcc_64/include -I/home/user/Qt/5.12.6/gcc_64/include/QtWidgets -I/home/user/Qt/5.12.6/gcc_64/include/QtGui -I/home/user/Qt/5.12.6/gcc_64/include/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include Vanne.h -o moc_Vanne.cpp
+	/home/user/Qt/5.12.6/gcc_64/bin/moc $(DEFINES) --include /home/user/Bureau/projet/moc_predefs.h -I/home/user/Qt/5.12.6/gcc_64/mkspecs/linux-g++ -I/home/user/Bureau/projet -I/home/user/Qt/5.12.6/gcc_64/include -I/home/user/Qt/5.12.6/gcc_64/include/QtWidgets -I/home/user/Qt/5.12.6/gcc_64/include/QtGui -I/home/user/Qt/5.12.6/gcc_64/include/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include Vanne.h -o moc_Vanne.cpp
 
 moc_mainwindow.cpp: mainwindow.h \
 		../../Qt/5.12.6/gcc_64/include/QtWidgets/QMainWindow \
@@ -924,12 +926,9 @@ moc_mainwindow.cpp: mainwindow.h \
 		../../Qt/5.12.6/gcc_64/include/QtGui/qtextformat.h \
 		../../Qt/5.12.6/gcc_64/include/QtGui/qpen.h \
 		mainwindow.h \
-		../../Qt/5.12.6/gcc_64/include/QtCore/QCoreApplication \
-		../../Qt/5.12.6/gcc_64/include/QtCore/qcoreapplication.h \
-		../../Qt/5.12.6/gcc_64/include/QtCore/qeventloop.h \
 		moc_predefs.h \
 		../../Qt/5.12.6/gcc_64/bin/moc
-	/home/user/Qt/5.12.6/gcc_64/bin/moc $(DEFINES) --include /home/user/Bureau/simulateurAvion/moc_predefs.h -I/home/user/Qt/5.12.6/gcc_64/mkspecs/linux-g++ -I/home/user/Bureau/simulateurAvion -I/home/user/Qt/5.12.6/gcc_64/include -I/home/user/Qt/5.12.6/gcc_64/include/QtWidgets -I/home/user/Qt/5.12.6/gcc_64/include/QtGui -I/home/user/Qt/5.12.6/gcc_64/include/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include mainwindow.h -o moc_mainwindow.cpp
+	/home/user/Qt/5.12.6/gcc_64/bin/moc $(DEFINES) --include /home/user/Bureau/projet/moc_predefs.h -I/home/user/Qt/5.12.6/gcc_64/mkspecs/linux-g++ -I/home/user/Bureau/projet -I/home/user/Qt/5.12.6/gcc_64/include -I/home/user/Qt/5.12.6/gcc_64/include/QtWidgets -I/home/user/Qt/5.12.6/gcc_64/include/QtGui -I/home/user/Qt/5.12.6/gcc_64/include/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include mainwindow.h -o moc_mainwindow.cpp
 
 moc_window2.cpp: window2.h \
 		../../Qt/5.12.6/gcc_64/include/QtWidgets/QMainWindow \
@@ -1069,12 +1068,9 @@ moc_window2.cpp: window2.h \
 		Moteur.h \
 		mainwindow.h \
 		window2.h \
-		../../Qt/5.12.6/gcc_64/include/QtCore/QCoreApplication \
-		../../Qt/5.12.6/gcc_64/include/QtCore/qcoreapplication.h \
-		../../Qt/5.12.6/gcc_64/include/QtCore/qeventloop.h \
 		moc_predefs.h \
 		../../Qt/5.12.6/gcc_64/bin/moc
-	/home/user/Qt/5.12.6/gcc_64/bin/moc $(DEFINES) --include /home/user/Bureau/simulateurAvion/moc_predefs.h -I/home/user/Qt/5.12.6/gcc_64/mkspecs/linux-g++ -I/home/user/Bureau/simulateurAvion -I/home/user/Qt/5.12.6/gcc_64/include -I/home/user/Qt/5.12.6/gcc_64/include/QtWidgets -I/home/user/Qt/5.12.6/gcc_64/include/QtGui -I/home/user/Qt/5.12.6/gcc_64/include/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include window2.h -o moc_window2.cpp
+	/home/user/Qt/5.12.6/gcc_64/bin/moc $(DEFINES) --include /home/user/Bureau/projet/moc_predefs.h -I/home/user/Qt/5.12.6/gcc_64/mkspecs/linux-g++ -I/home/user/Bureau/projet -I/home/user/Qt/5.12.6/gcc_64/include -I/home/user/Qt/5.12.6/gcc_64/include/QtWidgets -I/home/user/Qt/5.12.6/gcc_64/include/QtGui -I/home/user/Qt/5.12.6/gcc_64/include/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include window2.h -o moc_window2.cpp
 
 moc_window3.cpp: window3.h \
 		../../Qt/5.12.6/gcc_64/include/QtWidgets/QMainWindow \
@@ -1214,18 +1210,13 @@ moc_window3.cpp: window3.h \
 		Moteur.h \
 		mainwindow.h \
 		window2.h \
-		../../Qt/5.12.6/gcc_64/include/QtCore/QCoreApplication \
-		../../Qt/5.12.6/gcc_64/include/QtCore/qcoreapplication.h \
-		../../Qt/5.12.6/gcc_64/include/QtCore/qeventloop.h \
 		../../Qt/5.12.6/gcc_64/include/QtWidgets/QInputDialog \
 		../../Qt/5.12.6/gcc_64/include/QtWidgets/qinputdialog.h \
 		../../Qt/5.12.6/gcc_64/include/QtWidgets/qlineedit.h \
 		../../Qt/5.12.6/gcc_64/include/QtCore/QFile \
-		../../Qt/5.12.6/gcc_64/include/QtWidgets/QLabel \
-		../../Qt/5.12.6/gcc_64/include/QtWidgets/qlabel.h \
 		moc_predefs.h \
 		../../Qt/5.12.6/gcc_64/bin/moc
-	/home/user/Qt/5.12.6/gcc_64/bin/moc $(DEFINES) --include /home/user/Bureau/simulateurAvion/moc_predefs.h -I/home/user/Qt/5.12.6/gcc_64/mkspecs/linux-g++ -I/home/user/Bureau/simulateurAvion -I/home/user/Qt/5.12.6/gcc_64/include -I/home/user/Qt/5.12.6/gcc_64/include/QtWidgets -I/home/user/Qt/5.12.6/gcc_64/include/QtGui -I/home/user/Qt/5.12.6/gcc_64/include/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include window3.h -o moc_window3.cpp
+	/home/user/Qt/5.12.6/gcc_64/bin/moc $(DEFINES) --include /home/user/Bureau/projet/moc_predefs.h -I/home/user/Qt/5.12.6/gcc_64/mkspecs/linux-g++ -I/home/user/Bureau/projet -I/home/user/Qt/5.12.6/gcc_64/include -I/home/user/Qt/5.12.6/gcc_64/include/QtWidgets -I/home/user/Qt/5.12.6/gcc_64/include/QtGui -I/home/user/Qt/5.12.6/gcc_64/include/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include window3.h -o moc_window3.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
@@ -1786,11 +1777,10 @@ main.o: main.cpp mainwindow.h \
 		../../Qt/5.12.6/gcc_64/include/QtGui/qtextcursor.h \
 		../../Qt/5.12.6/gcc_64/include/QtGui/qtextformat.h \
 		../../Qt/5.12.6/gcc_64/include/QtGui/qpen.h \
-		../../Qt/5.12.6/gcc_64/include/QtCore/QCoreApplication \
-		../../Qt/5.12.6/gcc_64/include/QtCore/qcoreapplication.h \
-		../../Qt/5.12.6/gcc_64/include/QtCore/qeventloop.h \
 		../../Qt/5.12.6/gcc_64/include/QtWidgets/QApplication \
 		../../Qt/5.12.6/gcc_64/include/QtWidgets/qapplication.h \
+		../../Qt/5.12.6/gcc_64/include/QtCore/qcoreapplication.h \
+		../../Qt/5.12.6/gcc_64/include/QtCore/qeventloop.h \
 		../../Qt/5.12.6/gcc_64/include/QtWidgets/qdesktopwidget.h \
 		../../Qt/5.12.6/gcc_64/include/QtGui/qguiapplication.h \
 		../../Qt/5.12.6/gcc_64/include/QtGui/qinputmethod.h \
@@ -1799,9 +1789,7 @@ main.o: main.cpp mainwindow.h \
 		../../Qt/5.12.6/gcc_64/include/QtWidgets/QInputDialog \
 		../../Qt/5.12.6/gcc_64/include/QtWidgets/qinputdialog.h \
 		../../Qt/5.12.6/gcc_64/include/QtWidgets/qlineedit.h \
-		../../Qt/5.12.6/gcc_64/include/QtCore/QFile \
-		../../Qt/5.12.6/gcc_64/include/QtWidgets/QLabel \
-		../../Qt/5.12.6/gcc_64/include/QtWidgets/qlabel.h
+		../../Qt/5.12.6/gcc_64/include/QtCore/QFile
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o main.cpp
 
 mainwindow.o: mainwindow.cpp mainwindow.h \
@@ -1941,9 +1929,6 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		../../Qt/5.12.6/gcc_64/include/QtGui/qtextcursor.h \
 		../../Qt/5.12.6/gcc_64/include/QtGui/qtextformat.h \
 		../../Qt/5.12.6/gcc_64/include/QtGui/qpen.h \
-		../../Qt/5.12.6/gcc_64/include/QtCore/QCoreApplication \
-		../../Qt/5.12.6/gcc_64/include/QtCore/qcoreapplication.h \
-		../../Qt/5.12.6/gcc_64/include/QtCore/qeventloop.h \
 		../../Qt/5.12.6/gcc_64/include/QtWidgets/QFrame
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o mainwindow.cpp
 
@@ -2199,9 +2184,6 @@ window2.o: window2.cpp window2.h \
 		../../Qt/5.12.6/gcc_64/include/QtWidgets/qdialog.h \
 		Moteur.h \
 		mainwindow.h \
-		../../Qt/5.12.6/gcc_64/include/QtCore/QCoreApplication \
-		../../Qt/5.12.6/gcc_64/include/QtCore/qcoreapplication.h \
-		../../Qt/5.12.6/gcc_64/include/QtCore/qeventloop.h \
 		../../Qt/5.12.6/gcc_64/include/QtWidgets/QFrame \
 		../../Qt/5.12.6/gcc_64/include/QtWidgets/QLabel \
 		../../Qt/5.12.6/gcc_64/include/QtWidgets/qlabel.h \
@@ -2346,15 +2328,10 @@ window3.o: window3.cpp window3.h \
 		Moteur.h \
 		mainwindow.h \
 		window2.h \
-		../../Qt/5.12.6/gcc_64/include/QtCore/QCoreApplication \
-		../../Qt/5.12.6/gcc_64/include/QtCore/qcoreapplication.h \
-		../../Qt/5.12.6/gcc_64/include/QtCore/qeventloop.h \
 		../../Qt/5.12.6/gcc_64/include/QtWidgets/QInputDialog \
 		../../Qt/5.12.6/gcc_64/include/QtWidgets/qinputdialog.h \
 		../../Qt/5.12.6/gcc_64/include/QtWidgets/qlineedit.h \
-		../../Qt/5.12.6/gcc_64/include/QtCore/QFile \
-		../../Qt/5.12.6/gcc_64/include/QtWidgets/QLabel \
-		../../Qt/5.12.6/gcc_64/include/QtWidgets/qlabel.h
+		../../Qt/5.12.6/gcc_64/include/QtCore/QFile
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o window3.o window3.cpp
 
 moc_Vanne.o: moc_Vanne.cpp 
